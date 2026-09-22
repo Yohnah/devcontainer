@@ -1,0 +1,20 @@
+{
+	"name": "Debian DevContainer",
+	"remoteUser": "coder",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"target": "devcontainer",
+		"args": {
+			"BASE_IMAGE": "ghcr.io/yohnah/dev-debian:latest"
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:latest": {
+			"moby": false
+		}
+	},
+	"runArgs": [
+		"-v", "${env:SSH_AUTH_SOCK}:/ssh-agent",
+		"-e", "SSH_AUTH_SOCK=/ssh-agent"
+	]
+}
